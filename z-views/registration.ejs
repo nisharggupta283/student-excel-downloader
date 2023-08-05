@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./my-style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+        function allnumeric(e) {
+            var numbers = /^[0-9]+$/;
+            if (e.value.match(numbers)) {
+                document.getElementById('show-error').innerHTML='';
+                return true;
+            }
+            else {
+                // alert('Please input numeric characters only');
+                document.getElementById('show-error').innerHTML='Please input numeric characters only';
+                e.focus();
+                return false;
+            }
+        } 
+        function validate(e){
+            if(allnumeric(document.getElementById('mobileno'))){
+                document.my_form.submit();
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="title">Registeration Form</div>
+        <div class="content">
+            <form action="/save-employee" method="POST" name="my_form">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Full Name</span>
+                        <input type="text" name="fname" placeholder="Enter your name" required />
+                    </div>
+
+                    <div class="gender-details">
+                        <span class="details">Gender</span>
+
+                        <input type="radio" name="gender" value="M" required /> Male
+                        <input type="radio" name="gender" value="F" /> Female
+                        <input type="radio" name="gender" value="G" /> Prefer Not to Say
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Date of Birth</span>
+                        <input type="date" placeholder="" id="Date" name="dob" required />
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Email Id</span>
+                        <input type="email" placeholder="Enter your Email Id" name="email" required />
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Mobile Number</span>
+                        <input type="text" placeholder="Enter your Number" id="mobileno" name="mobileno" required maxlength="10" onkeyup="allnumeric(this);"/>
+                    </div>
+                    <div>
+                        <h4 id="show-error" style="color: rgb(182, 29, 29);"></h4>
+                    </div>
+                </div>
+
+                <div class="button">
+                    <input type="button" value="Register" onclick="validate(this);"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

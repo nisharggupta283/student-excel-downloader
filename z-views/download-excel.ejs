@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Report</title>
+    <script src="/download-excel.js"></script>
+</head>
+
+<body>
+    <form name="report_create" action="ggs.erm.servlet.report.ReportCreateS" method="post">
+        <table>
+            <tr>
+                <td class="subNavBlackCopy" nowrap>Choose the information to display on the report</td>
+            </tr>
+        </table>
+        <table>
+
+            <tr>
+                <td valign="top" bgcolor="#F5F5F5" class="subNavBlackCopy" height="12" align="left" width="30%">
+                    Available Fields *</td>
+                <td valign="top" bgcolor="#F5F5F5" class="subNavBlackCopy" height="12" align="left" width="30%">
+                </td>
+                <td valign="top" bgcolor="#F5F5F5" class="subNavBlackCopy" height="12" align="left" width="30%">
+                    Fields to Display *</td>
+            </tr>
+            <tr>
+                <td valign="top" bgcolor="#F5F5F5" height="12" align="left" width="30%">
+                    <SELECT name="reportfield" size="15">
+                        <%
+                        for(let x of ff){%>
+                        <option value="<%=x%>"><%=x%></option>
+                        <%}%>
+                    </SELECT>
+                </td>
+
+
+                <td width="30%" valign="top" align="center" bgcolor="#eeeeee" height="100%">
+                    <table width="100%" height="100%">
+                        <tr align="center">
+                            <td width="30%" align="left">Add
+
+                            </td>
+                            <td align="right">
+                                <input type="button" name="add" value=" > " onclick=_clickadd()>
+                            </td>
+                        </tr>
+                        <tr align="center">
+                            <td align="left">Add All </td>
+                            <td align="right">
+                                <input type="button" name="addall" value=" >> " onclick=_clickaddall()>
+                            </td>
+                        </tr>
+
+                        <tr align="center">
+                            <td align="left">Remove
+                            </td>
+                            <td align="right">
+
+                                <input type="button" name="delete" value="<" onclick=_clickdelete()>
+                            </td>
+                        </tr>
+                        <tr align="center">
+                            <td align="left" nowrap>Remove All</td>
+                            <td align="right">
+                                <input type="button" name="deleteall" value=" << " onclick=_clickdeleteall()>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+
+                <td valign="top" bgcolor="#F5F5F5" height="12" align="left" width="30%">
+                    <table>
+                        <tr>
+                            <td>
+                                <select name="displayfield" size="12" onchange="_selectdispall()">
+                                </select>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td align="right" width="100%">
+                                            <input type="button" name="up" value="  up  " onclick=_clickup()>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right" width="100%">
+                                            <input type="button" name="down" value=" down " onclick=_clickdown()>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td align="left" valign="top" bgcolor="#F5F5F5" height="12" align="left" nowrap>Field
+                                Label * &nbsp;
+
+                                <input type="text" size="30" maxlength="30" name="label" onblur="_blurlabel()">
+                            </td>
+
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="3" align="center">
+
+                    <input type="button" name="cancel" value="Cancel" onclick="_clickcancel()" />
+                    <input type="button" name="previous" value="Previous" onclick="_clickprevious()" />
+                    <input type="button" name="next" value="Next" onclick="_clicknext()" />
+                    <input type="button" name="finish" value="Finish" onclick="_clickfinish()" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="displaylabel" multiple style="visibility:hidden">
+                    </select>
+
+                </td>
+            </tr>
+        </table>
+        <input type="hidden" name="mode">
+        <input type="hidden" name="submode">
+    </form>
+</body>
+
+</html>
