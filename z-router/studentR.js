@@ -10,5 +10,6 @@ router.get('/see-details',studentControler.getAllStudents);
 router.post('/add-stdt',studentControler.addStudent);
 router.all('/terminate-stdt',studentControler.terminateStdt);
 router.all('/update-stdt',studentControler.updateStudent);
+router.all('/single-stdt',studentControler.getSingleStudents);
 
 module.exports=router;

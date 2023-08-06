@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>Table 05</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href='/font.css' rel='stylesheet' type='text/css'>
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+	<link rel="stylesheet" href="/table-style.css">
+	<script src="/jquery.js"></script>
+	<script src="/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Student Detail</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table table-responsive-xl">
+							<thead>
+								<tr>
+									<th>STUDENT DETAILS</th>
+									<th>STUDENT PERSONAL DETAILS</th>
+									<th>COURSE ENROLLEMENT</th>
+									<th>CONTACT INFO</th>
+									<th>REMARK</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<%if(x){%>
+									<tr class="alert" role="alert">
+
+                                        <!-- student details -->
+										<td>
+											<div class="pl-3 email">
+												<span>
+													<%=x.NAME%>
+												</span>
+												<span>
+													Age : <%=x.AGE%>
+												</span>
+												<span>
+													College: <%=x.COLLEGE%>
+												</span>
+                                                <span>
+                                                    Gradutaing in <%=x.YEAR%>
+                                                </span>
+												<span>
+													DOB: <%=x.DOB%>
+												</span>
+												<span>
+													Contact No: <%=x.MOBILE%>
+												</span>
+                                                <span>
+                                                    Student ID : <%=x._id%>
+                                                </span>
+											</div>
+										</td>
+                                        <!-- personal details -->
+										<td>
+                                            <span>Gender :<%=x.GENDER%></span>
+                                            <div> Mother :<%=x.MOTHER_NAME%></div>
+                                            <div>Father : <%=x.FATHER_NAME%></div>
+                                            <div>
+                                               <%=x.NIN_TYPE%>: <%=x.NIN_NUMBER%>
+                                            </div>
+                                            <span>Previous Experience : <%=x.PREVIOUS_EXPERIENCE%></span>
+										</td>
+                                        <!-- Enrolled Infromation -->
+                                        <td>
+                                            <span>
+                                                <%=x.COURSE%>&nbsp;
+                                            </span>
+                                            <span>(<%=x.BATCH%>)</span>
+                                            <span>
+                                                Enrolled in course at :<%=x.ADMISSION_DATE%>
+                                            </span>
+                                        </td>
+                                        <!-- contact details -->
+                                        <td>
+                                            <button type="button" class="close" data-dismiss="alert"
+                                                aria-label="Close">
+                                                <span aria-hidden="true">
+                                                    <%=x.EMAIL%>
+                                                </span>
+                                                <span>
+                                                    <%=x.MOBILE%>
+                                                </span>
+                                            </button>
+                                        </td>
+                                        <!-- remarks -->
+                                        <td>
+                                            REMARK : <%=x.REMARK%>
+                                        </td>
+									</tr>
+								<%}%>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+    <section class="ftco-section" style="padding: 0;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                    <h2 class="heading-section">Interviews List</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-wrap">
+                        <table class="table table-responsive-xl">
+                            <thead>
+                                <tr>
+                                    <th>COMPANY</th>
+                                    <th>INTERVIEW Details</th>
+                                    <th>INTERVIEWER</th>
+                                    <th>INTERVIEW TOPICS</th>
+                                    <th>dd</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Repeated code -->
+                                <%for(let detail of in_details){%>
+                                    <tr class="alert" role="alert">
+                                        <td>
+                                            <div class="pl-3 email">
+                                                <span>'<%=detail.COMPANY%>'</span>
+                                            </div>
+                                        </td>
+                                        <td class="d-flex align-items-center">
+                                            <div class="pl-3 email">
+                                                <span><%=detail.INTERVIEW_NAME%></span>
+                                                <span><%=detail.INTERVIEW_DATE%></span>
+                                                <span><%=detail.INTERVIEW_TIME%></span>
+                                            </div>
+                                        </td>
+                                        <td><%=detail.INTERVIEWER%></td>
+                                        <td class="status"><span class="active"><%=detail.INTERVIEW_TOPICS%></span></td>
+                                        <td>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true"><i class="fa fa-close"></i></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                <%}%>
+								<!-- Repeated code -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+</body>
+
+</html>

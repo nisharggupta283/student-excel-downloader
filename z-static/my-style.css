@@ -94,7 +94,7 @@ form .input-box2 span.details {
     margin-bottom: 5px;
 }
 
-.user-details .input-box input {
+.user-details .input-box input, textarea{
     height: 45px;
     width: 100%;
     outline: none;
@@ -106,7 +106,7 @@ form .input-box2 span.details {
     transition: all 0.3s ease;
 }
 
-.user-details .input-box2 input {
+.user-details .input-box2 input, textarea{
     height: 45px;
     width: 100%;
     outline: none;
@@ -118,7 +118,7 @@ form .input-box2 span.details {
     transition: all 0.3s ease;
 }
 
-.user-details .input-box3 input {
+.user-details .input-box3 input,textarea {
     height: 45px;
     width: 100%;
     outline: none;
@@ -154,8 +154,8 @@ form .input-box2 span.details {
     transition: all 0.3s ease;
 }
 
-.user-details .input-box input:focus,
-.user-details .input-box input:valid {
+.user-details .input-box input:focus,textarea,
+.user-details .input-box input:valid,textarea {
     border-color: #9b59b6;
 }
 

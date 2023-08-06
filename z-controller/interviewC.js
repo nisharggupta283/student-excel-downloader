@@ -4,9 +4,9 @@ const db = require("../z-config/mongoose-config.js");
 //function to get details of all the INTERVIEW details
 module.exports.getAllInterviewDetails = function (req, res) {
   INTERVIEW.find({ ACTIVE: "Y" })
-    .then((result) => {
-      console.log(result);
-      res.send(result);
+    .then((data) => {
+      console.log(data);
+      res.render('interview-list',{data:data});
     })
     .catch((err) => {
       res.send(err);
@@ -17,7 +17,6 @@ module.exports.getAllInterviewDetails = function (req, res) {
 module.exports.addInterviewDetails = function (req, res) {
   console.log("request data-------------------------------------->");
   console.log(req.body);
-  console.log(req.query);
   console.log("request data end-------------------------------------->");
   INTERVIEW.create(req.body)
     .then((result) => {

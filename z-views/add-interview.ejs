@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="/my-style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="title">Interview Creation Form</div>
+    <div class="content">
+      <form action="/interview/add-interview" method="POST">
+        <div class="user-details">
+
+          <div class="input-box">
+            <span class="details">COMPANY</span>
+            <input type="text" name="COMPANY"  />
+          </div>
+
+          <div class="input-box">
+            <span class="details">INTERVIEW NAME</span>
+            <input type="text" name="INTERVIEW_NAME" />
+          </div>
+
+          <div class="input-box">
+            <span class="details">INTERVIEW DATE</span>
+            <input type="date" id="Date" name="INTERVIEW_DATE" />
+          </div>
+
+          <div class="input-box">
+            <span class="details">INTERVIEWER</span>
+            <input type="email" placeholder="INTERVIEWER" name="INTERVIEWER" />
+          </div>
+
+          <div class="input-box">
+            <span class="details">INTERVIEWER DESIGNATION</span>
+            <input type="text" placeholder="INTERVIEWER DESIGNATION" name="INTERVIEWER_DESIGNATION" />
+          </div>
+
+          <div class="input-box"></div>
+          <div class="input-box">
+            <span class="details">INTERVIEW TIME</span>
+            <input type="time" name="INTERVIEW_TIME" />
+          </div>
+          <div class="input-box">
+            <span class="details">INTERVIEW TOPICS</span>
+            <input type="text" placeholder="INTERVIEW_TOPICS" name="INTERVIEW_TOPICS" />
+          </div>
+
+          <div class="input-box2">
+            <span class="details">AGENDA</span>
+            <textarea name="AGENDA" id="AGENDA" cols="5" rows="10" style="height: 140px;"></textarea>
+            <!-- <input type="text" placeholder="AGENDA" name="" /> -->
+          </div>
+
+        </div>
+        <div class="button">
+          <input type="submit" value="Register"/>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

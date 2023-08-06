@@ -38,11 +38,17 @@ app.use("/excel", xlsxRouter);
 
 // app.all("/job-opening", request);
 
-// app.all('/', function (req, res) {
-//   let fields = STUDENTS.schema.obj;
-//   console.log(Object.keys(fields));
-//   res.render('login.ejs', { ff: Object.keys(fields) });
-// })
+//to add the student
+app.all('/yu', function (req, res) {
+  let fields = STUDENTS.schema.obj;
+  console.log(Object.keys(fields));
+  res.render('add-student', { ff: Object.keys(fields), error: "" });
+});
+
+//to add the interview
+app.all('/in', function (req, res) {
+  res.render('add-interview');
+});
 
 
 const { EMPLOYEE } = require('./z-models/employee');
@@ -50,18 +56,18 @@ const { EMPLOYEE } = require('./z-models/employee');
 app.all('/save-employee', function (req, res) {
   console.log(req.body);
   EMPLOYEE.create({
-    email:req.body.email,
-    pass:`${req.body.email.substring(0,3)}${parseInt(Math.random()*10000)}`
+    email: req.body.email,
+    pass: `${req.body.email.substring(0, 3)}${parseInt(Math.random() * 10000)}`
   }).
-  then((result)=>{
-    console.log(result);
-    res.render('login.ejs',{error:`Your password is please save it ${result.pass}`});
-  }).catch((err)=>{
-    console.log('-------------------------------------------------------error while employee registration');
-    console.log(err);
-    console.log('-------------------------------------------------------error while employee registration');
-    return;
-  })
+    then((result) => {
+      console.log(result);
+      res.render('login.ejs', { error: `Your password please save it ${result.pass}` });
+    }).catch((err) => {
+      console.log('-------------------------------------------------------error while employee registration');
+      console.log(err);
+      console.log('-------------------------------------------------------error while employee registration');
+      return;
+    })
   //save detail of employee and then redirect to login.ejs
 });
 
@@ -74,15 +80,18 @@ app.all('/register', function (req, res) {
 app.all('/login', function (req, res) {
   console.log(req.body);
   EMPLOYEE.find({ email: req.body.email, pass: req.body.pass }).then((result) => {
-    console.log(result);
+    console.log(`result.length     ${result.length}`);
     // app.use(session({"user":"Y"}))
     console.log(`logged in succesfully ------------------------> `);
-    res.render('add-student.ejs');
+    if (result.length > 0)
+      res.redirect('/interview/get-interview');
+    else
+      res.render('login.ejs', { error: "Invalid Credential" });
   })
     .catch((err) => {
       console.log('--------------------------------------------------Error while Logining');
       console.log(err);
-      res.redirect('login.ejs',{error:"Invalid Credential"});
+      res.redirect('login.ejs', { error: "Invalid Credential" });
     });
   //make schema of user 
   //get details of employee from mongosse and validate then forward it
