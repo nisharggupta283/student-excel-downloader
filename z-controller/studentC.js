@@ -10,12 +10,12 @@ module.exports.getSingleStudents = function (req, res) {
   STUDENTS.findById(req.query.id)
     .then((result) => {
       INTERVIEW.find({ ACTIVE: "Y" })
-      .then((data) => {
-        res.render('see-student',{x:result,in_details:data});
-      })
-      .catch((err) => {
-        res.send(err);
-      });
+        .then((data) => {
+          res.render('see-student', { x: result, in_details: data });
+        })
+        .catch((err) => {
+          res.send(err);
+        });
     })
     .catch((err) => {
       res.send(err);
@@ -27,7 +27,7 @@ module.exports.getAllStudents = function (req, res) {
   STUDENTS.find({ ACTIVE: "Y" })
     .then((result) => {
       // console.log(result);
-      res.render('student-list',{data:result});
+      res.render('student-list', { data: result });
     })
     .catch((err) => {
       res.send(err);
@@ -36,13 +36,10 @@ module.exports.getAllStudents = function (req, res) {
 
 //function to add the students
 module.exports.addStudent = function (req, res) {
-  console.log("request data-------------------------------------->");
-  console.log(req.body);
-  console.log("request data end-------------------------------------->");
   STUDENTS.create(req.body)
     .then((result) => {
       console.log(result);
-      res.send(result);
+      res.redirect('/student/see-details');
     })
     .catch((err) => {
       res.send(err);
@@ -51,10 +48,6 @@ module.exports.addStudent = function (req, res) {
 
 //function to terminate the students
 module.exports.terminateStdt = function (req, res) {
-  console.log("delete request data-------------------------------------->");
-  console.log(req.body);
-  console.log(req.query);
-  console.log("delete request data end-------------------------------------->");
   STUDENTS.findOneAndUpdate({ _id: req.query.id }, { ACTIVE: "N" })
     .then((result) => {
       console.log(result);
@@ -66,11 +59,7 @@ module.exports.terminateStdt = function (req, res) {
 };
 
 //function to update the single student
-module.exports.updateStudent  = function (req, res) {
-  console.log("update request data-------------------------------------->");
-  console.log(req.body);
-  console.log(req.query);
-  console.log("update request data end-------------------------------------->");
+module.exports.updateStudent = function (req, res) {
 
   STUDENTS.findOneAndUpdate({ _id: req.query.id }, req.body)
     .then((result) => {
@@ -81,3 +70,34 @@ module.exports.updateStudent  = function (req, res) {
       res.send(err);
     });
 };
+
+module.exports.addInterview = function (req, res) {
+  const interview_id=req.query.interview_id+'';
+  console.log(interview_id);
+  if (req.query.work == 'Add') {
+    STUDENTS.findByIdAndUpdate({ _id: req.query.id },{ $push: { INTERVIEWS: interview_id } })
+      .then((result) => {
+        // console.log(result);
+        res.json({ "work": "Un-assign" });
+      })
+      .catch((err) => {
+        res.send(err);
+      });
+  } else {
+    
+    STUDENTS.findByIdAndUpdate({ _id: req.query.id }, { $pop: { INTERVIEWS: interview_id } })
+      .then((result) => {
+        // console.log(result);
+        res.json({ "work": "Assign" });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.send(err);
+      });
+  }
+};
+
+module.exports.renderAddStudentPage=function(req,res){
+  res.render('add-student');
+}
+

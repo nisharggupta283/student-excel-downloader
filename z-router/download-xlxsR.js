@@ -3,6 +3,7 @@ const xlsxController = require("../z-controller/xlxsC");
 
 const router = express.Router();
 
-router.all("/start-download", xlsxController.startDownload);
+router.all('/render-exceldownloader',xlsxController.renderXlXSDownPage)
+router.all("/start-download", xlsxController.exportCountriesFile);
 
 module.exports = router;

@@ -14,11 +14,15 @@
 		function callSeeStudentMeth(e){
 			location.href='/student/single-stdt?id='+e.id;
 		}
+		function changeLoc(){
+            location.href='/student/studentadd-render'
+        }
 	</script>
 
 </head>
 
 <body>
+	<button type="button" class="btn btn-secondary btn-lg btn-block" onclick="changeLoc();">Click here to add new student</button>
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">

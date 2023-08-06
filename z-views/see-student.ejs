@@ -6,11 +6,14 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link href='/font.css' rel='stylesheet' type='text/css'>
-	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/table-style.css">
 	<script src="/jquery.js"></script>
 	<script src="/bootstrap.min.js"></script>
-
+    <script src="/jquery.js"></script>
+    <script>
+        var student_id='<%=x._id%>';
+    </script>
 </head>
 
 <body>
@@ -150,8 +153,8 @@
                                         <td><%=detail.INTERVIEWER%></td>
                                         <td class="status"><span class="active"><%=detail.INTERVIEW_TOPICS%></span></td>
                                         <td>
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true"><i class="fa fa-close"></i></span>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="float: none;">
+                                                <span aria-hidden="true" id="<%=detail._id%>" onclick="callAddInterview(this);">Add</span>
                                             </button>
                                         </td>
                                     </tr>
@@ -164,7 +167,26 @@
             </div>
         </div>
     </section>
-    
+    <script>
+        function callAddInterview(e){
+            $.ajax({
+                type: "POST",
+                //work=Add then add and send work as remove
+                //work=remove then remove and send work as add
+                url: "/student/assign-interview?id=" + student_id+'&work='+e.innerHTML+'&interview_id='+e.id,
+                dataType: "JSON",
+                cache: false,
+                async: false,
+                error: function (err) {
+                    alert('Error occured see console to check more');
+                    console.log(err);
+                },
+                success: function (data) {
+                    e.innerHTML=data.work;
+                },
+            });
+        }
+    </script>
 </body>
 
 </html>

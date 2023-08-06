@@ -9,14 +9,22 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/table-style.css">
     <script src="/jquery.js"></script>
-    <!-- <script src="js/popper.js"></script> -->
-    <!-- <script src="js/main.js"></script> -->
     <script src="/bootstrap.min.js"></script>
+    <script>
+        function changeLoc(flag){
+            if(flag)
+            location.href='/interview/show-add-interview';
+        else
+        location.href='/excel/render-exceldownloader';
+        }
+    </script>
 
 </head>
 
 <body>
-    <section class="ftco-section">
+    <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="changeLoc(true);">Click here to add new interview</button>
+    <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="changeLoc(false);">Click here to Download Report</button>
+    <section class="ftco-section" style="padding: 4em 0;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center mb-5">

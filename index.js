@@ -39,18 +39,6 @@ app.use("/excel", xlsxRouter);
 // app.all("/job-opening", request);
 
 //to add the student
-app.all('/yu', function (req, res) {
-  let fields = STUDENTS.schema.obj;
-  console.log(Object.keys(fields));
-  res.render('add-student', { ff: Object.keys(fields), error: "" });
-});
-
-//to add the interview
-app.all('/in', function (req, res) {
-  res.render('add-interview');
-});
-
-
 const { EMPLOYEE } = require('./z-models/employee');
 //save logining details
 app.all('/save-employee', function (req, res) {

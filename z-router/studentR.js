@@ -11,5 +11,6 @@ router.post('/add-stdt',studentControler.addStudent);
 router.all('/terminate-stdt',studentControler.terminateStdt);
 router.all('/update-stdt',studentControler.updateStudent);
 router.all('/single-stdt',studentControler.getSingleStudents);
-
+router.all('/assign-interview',studentControler.addInterview);
+router.all('/studentadd-render',studentControler.renderAddStudentPage);
 module.exports=router;
