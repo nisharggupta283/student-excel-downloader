@@ -85,7 +85,7 @@ module.exports.addInterview = function (req, res) {
       });
   } else {
     
-    STUDENTS.findByIdAndUpdate({ _id: req.query.id }, { $pop: { INTERVIEWS: interview_id } })
+    STUDENTS.findByIdAndUpdate({ _id: req.query.id }, { $pull: { INTERVIEWS: interview_id } })
       .then((result) => {
         // console.log(result);
         res.json({ "work": "Assign" });

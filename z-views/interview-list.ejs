@@ -13,9 +13,11 @@
     <script>
         function changeLoc(flag){
             if(flag)
-            location.href='/interview/show-add-interview';
-        else
-        location.href='/excel/render-exceldownloader';
+                location.href='/interview/show-add-interview';
+            else if(flag==1)
+                location.href='/excel/render-exceldownloader';
+            else
+            location.href='/student/see-details'
         }
     </script>
 
@@ -23,7 +25,8 @@
 
 <body>
     <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="changeLoc(true);">Click here to add new interview</button>
-    <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="changeLoc(false);">Click here to Download Report</button>
+    <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="changeLoc(1);">Click here to Download Report</button>
+    <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="changeLoc(false);">Click here to See Student</button>
     <section class="ftco-section" style="padding: 4em 0;">
         <div class="container">
             <div class="row justify-content-center">
