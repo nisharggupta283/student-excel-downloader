@@ -91,7 +91,7 @@ app.all('/', function (req, res) {
 
 
 //Start of server
-app.listen(8080, function (err) {
+app.listen(9091, function (err) {
   if (err) {
     console.log(
       "Error Occured----------------------------------------------------------------"
@@ -102,6 +102,6 @@ app.listen(8080, function (err) {
     );
     return;
   }
-  console.log("Server running at port 8080");
-  console.log('http://13.53.124.212:8000/');
+  console.log("Server running at port 9091");
+  console.log('http://13.53.124.212:9091/');
 });
